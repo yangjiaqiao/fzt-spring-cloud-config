@@ -1,0 +1,30 @@
+server:
+  port: 8081
+spring: #服务名称
+  application:
+    name: fzt-auth
+  # 数据源配置
+  datasource:
+    url: jdbc:mysql://cdb-9xsfu2iv.gz.tencentcdb.com:10040/fzt_cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: yangjiaqiao
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  # JPA配置
+  jpa:
+    show-sql: true # 是否打印SQL语句
+    generate-ddl: true # 是否自定建表
+    database: mysql # JPA连接数据库类型
+eureka:
+  instance:
+    prefer-ip-address: true # 开启在Eureka显示注册的服务以IP的形式进行展示
+    # 修改续约间隔时间
+    lease-renewal-interval-in-seconds: 20
+    # 修改服务失效时间
+    lease-expiration-duration-in-seconds: 60
+  client:
+    register-with-eureka: true # 注册到Eureka服务中心
+    fetch-registry: true # 从Eureka服务中心拉取注册服务信息
+    service-url:
+      # 注册中心地址 ---Eureka服务中心的访问地址
+      # defaultZone: http://127.0.0.1:8088/eureka,http://127.0.0.1:8099/eureka
+      defaultZone: http://127.0.0.1:8088/eureka

@@ -1,0 +1,26 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: fzt-movie
+eureka:
+  instance:
+    prefer-ip-address: true # 开启在Eureka显示注册的服务以IP的形式进行展示
+  client:
+    register-with-eureka: true # 注册到Eureka服务中心
+    fetch-registry: true # 从Eureka服务中心拉取注册服务信息
+    service-url:
+      # 注册中心地址 ---Eureka服务中心的访问地址
+      # defaultZone: http://127.0.0.1:8088/eureka,http://127.0.0.1:8099/eureka
+      defaultZone: http://127.0.0.1:8088/eureka
+    # 修改提供方获取注册信息的间隔时间
+    registry-fetch-interval-seconds: 5
+# 修改Ribbon负载均衡规则
+#fzt-auth: #服务名称
+  #ribbon: #Ribbon固定名称
+    #负载平衡器规则类别名称
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+# 开启hystrix熔断器
+feign:
+  hystrix:
+    enabled: true
